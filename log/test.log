@@ -1,0 +1,564 @@
+  [1m[36m (30.6ms)[0m  [1mCREATE TABLE "ideas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "picture" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (25.7ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (23.5ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (26.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (23.7ms)[0m  [1mCREATE TABLE "usuarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "us" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (24.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (23.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (25.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20171116200758')[0m
+  [1m[35m (22.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20171115212618')
+  [1m[36m (22.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20171116185230')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.6ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)[0m
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:25:45', '2017-11-16 20:25:45', 298486374)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:46', '2017-11-16 20:27:46', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:27:55', '2017-11-16 20:27:55', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:09', '2017-11-16 20:29:09', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:09', '2017-11-16 20:29:09', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:09', '2017-11-16 20:29:09', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:09', '2017-11-16 20:29:09', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:09', '2017-11-16 20:29:09', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (1.3ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:09', '2017-11-16 20:29:09', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)[0m
+  [1m[35mFixture Insert (0.6ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+SQLite3::ConstraintException: UNIQUE constraint failed: users.email: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2017-11-16 20:29:10', '2017-11-16 20:29:10', 298486374)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
